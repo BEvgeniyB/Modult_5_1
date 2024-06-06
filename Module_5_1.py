@@ -19,6 +19,7 @@ def number_to_words(n):
     else:
         return o.get(n2) + ' ' + f.get(n1)
 def declension_of_floors(n):
+
     if n == 1 :
         w='этаж'
     elif 2 <= n < 5:
@@ -34,6 +35,12 @@ class House:
 
 
     def go_to(self,new_floor):
+        if type(new_floor) != 'int':
+            try:
+                new_floor = int(new_floor)
+            except ValueError:
+                print('Введите число тажей')
+                return
         if new_floor > self.number_of_floors:
             print(f"В здании всего {number_to_words(self.number_of_floors)} "
                   f"{declension_of_floors(self.number_of_floors)}")
